@@ -214,7 +214,6 @@ const Alert = forwardRef<AlertInterface>(({}, ref) => {
 
   const to = snapPoint(translation.y, velocity.y, [height, 0]);
 
-  console.log('to:', to);
   useCode(
     () => [
       cond(
@@ -244,7 +243,6 @@ const Alert = forwardRef<AlertInterface>(({}, ref) => {
           ]),
         ],
       ),
-      call([to], ([val]) => console.log('val:', val)),
     ],
     [],
   );
@@ -270,7 +268,6 @@ const Alert = forwardRef<AlertInterface>(({}, ref) => {
     ],
   };
 
-  console.log('height:', height);
 
   return visible ? (
     <View style={[styles.container]}>

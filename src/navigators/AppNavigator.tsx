@@ -4,7 +4,7 @@ import {
   TransitionPresets,
   createStackNavigator,
 } from '@react-navigation/stack';
-import { Home } from '@screens';
+import HomeTabs from './HomeTabNavigator';
 import { CardInterpolator } from '@utils';
 
 /**
@@ -15,7 +15,7 @@ interface AppNavigatorProps {}
 const AppStack = createStackNavigator();
 
 const screens = NavigationService.getScreens({
-  Home,
+  HomeTabs,
 });
 
 /**

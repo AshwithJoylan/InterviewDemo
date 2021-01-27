@@ -6,7 +6,6 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import { NavigationService } from '@services';
 import App from './AppNavigator';
-import Auth from './AuthNavigator';
 import { CardInterpolator, Root } from '@utils';
 
 /**
@@ -17,7 +16,6 @@ interface MainNavigatorProps {}
 const MainStack = createStackNavigator();
 
 const screens = NavigationService.getScreens({
-  Auth,
   App,
 });
 

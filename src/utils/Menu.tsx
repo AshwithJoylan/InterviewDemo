@@ -171,7 +171,6 @@ const Menu = forwardRef<MenuInterface>(({}, ref) => {
       easing: Easing.linear,
     }).start(({ finished }) => {
       if (finished) {
-        console.log('item,i:', item, i);
         if (item && i !== undefined) {
           onPress(item, i);
         }

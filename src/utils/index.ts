@@ -10,7 +10,8 @@ export { default as StatusBar } from './StatusBar';
 export { default as RefreshControl } from './RefreshControl';
 export { default as Root, Menu, Alert, Toast } from './Root';
 export { default as Switch } from './Switch';
-
+export { default as Loader } from './Loader';
+export * from './Slider';
 export * from './Text';
 export * from './state';
 export * from './Buttons';

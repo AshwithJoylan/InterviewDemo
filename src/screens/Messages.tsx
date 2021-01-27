@@ -3,22 +3,22 @@ import { View, StyleSheet } from 'react-native';
 import { Text } from '@utils';
 
 /**
- * @interface LoginProps
+ * @interface MessagesProps
  */
-interface LoginProps {}
+interface MessagesProps {}
 
 /**
- * Login
+ * Messages
  */
-const Login: React.FC<LoginProps> = () => {
+const Messages: React.FC<MessagesProps> = () => {
   return (
     <View style={styles.container}>
-      <Text>Login</Text>
+      <Text>Messages</Text>
     </View>
   );
 };
 
-export default Login;
+export default Messages;
 
 const styles = StyleSheet.create({
   container: {
