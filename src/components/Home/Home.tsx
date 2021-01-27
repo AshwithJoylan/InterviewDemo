@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { ListRenderItem } from 'react-native';
+import { ListRenderItem, useWindowDimensions } from 'react-native';
 import {
   Text,
   Container as Parent,
@@ -7,6 +7,7 @@ import {
   ReHighlight,
   Slider,
   Header as Head,
+  IS_PAD,
 } from '@utils';
 import styles from './styles';
 import { FlatList } from 'react-native-gesture-handler';
@@ -39,12 +40,15 @@ export const List: FC<HomeListProps> = ({ ListHeaderComponent, getData }) => {
     (state) => state.getImages,
   );
 
+  const { width } = useWindowDimensions();
+
   console.log('isLoading:', isLoading);
   /**
    * Render List Item
    */
   const renderItem: ListRenderItem<string> = ({ item }) => (
-    <ReHighlight style={[styles.listItem]}>
+    <ReHighlight
+      style={[styles.listItem, { width: IS_PAD ? width / 3 : '50%' }]}>
       <FastImage
         resizeMode="cover"
         style={styles.listImage}
@@ -57,8 +61,9 @@ export const List: FC<HomeListProps> = ({ ListHeaderComponent, getData }) => {
     <Loader />
   ) : (
     <FlatList
+      key={IS_PAD ? 'pad' : 'phone'}
       {...{ data }}
-      numColumns={2}
+      numColumns={IS_PAD ? 3 : 2}
       keyExtractor={(_, i) => i.toString()}
       showsVerticalScrollIndicator={false}
       {...{ ListHeaderComponent, data, renderItem }}
@@ -76,6 +81,9 @@ export const HomeHeaderComponent: FC<HomeHeaderProps> = ({
   const { data, hasError, isLoading } = useSelector(
     (state) => state.getCarouselImages,
   );
+  const { width, height } = useWindowDimensions();
+
+  console.log('width:', width, height);
   return (
     <Slider
       timer={4000}
@@ -83,8 +91,8 @@ export const HomeHeaderComponent: FC<HomeHeaderProps> = ({
       {...{ data }}
       animation
       contentContainerStyle={{}}
-      width={Sizes.WIDTH}
-      height={Sizes.SIZE_200}
+      width={width}
+      height={IS_PAD ? Sizes.scaleSize(340) : Sizes.SIZE_200}
       local={false}
       onPress={() => {}}
       indicatorActiveColor={colors.secondary}

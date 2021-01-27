@@ -6,7 +6,6 @@ export default StyleSheet.create({
     flex: 1,
   },
   listItem: {
-    width: '50%',
     aspectRatio: 1 / 1,
   },
   listImage: {
